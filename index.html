@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leisure Solutions Flipbook</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/dflip@1.0.0/css/dflip.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/dflip@1.0.0/css/themify-icons.min.css" rel="stylesheet">
+
+    <style>
+        /* Reset margins and ensure full screen */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            /* Clean off-white background */
+            background-color: #FAFAFA; 
+        }
+
+        /* Container styling for the flipbook */
+        #my-flipbook {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="my-flipbook"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dflip@1.0.0/js/dflip.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Your Cloudinary PDF Link
+            var pdfUrl = "https://res.cloudinary.com/dhnjwiyzn/image/upload/v1792837904/LeViera_Profile_1_z2zqa2.pdf";
+            
+            var options = {
+                // UI & Design
+                backgroundColor: "#FAFAFA", // Matches the CSS off-white background
+                height: "100%",             // Fills the container
+                
+                // Audio & Interactions
+                soundEnable: true,          // Adds the page-flip sound on each click
+                duration: 700,              // Speed of the flip animation in milliseconds
+                
+                // Controls Layout (Includes arrows, zoom, fullscreen, and thumbnails)
+                allControls: "altPrev,pageNumber,altNext,play,outline,thumbnail,zoomIn,zoomOut,fullScreen,download,more",
+                moreControls: "pageMode,startPage,endPage,sound",
+                hideControls: "",
+                
+                // Performance Optimization
+                webgl: true                 // Uses hardware acceleration for faster rendering
+            };
+
+            // Initialize the flipbook
+            $("#my-flipbook").flipBook(pdfUrl, options);
+        });
+    </script>
+
+</body>
+</html>
